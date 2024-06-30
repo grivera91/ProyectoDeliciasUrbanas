@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Prueba3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.DeliciasUrbanas" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,14 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Prueba3.NoActionBar">
+    <style name="Theme.DeliciasUrbanas.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Prueba3.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.DeliciasUrbanas.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.Prueba3.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.DeliciasUrbanas.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     
     <style name="BottomSheetTheme" parent = "Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
