@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +21,6 @@
         android:layout_width="150dp"
         android:layout_height="130dp"
         android:focusable="false"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imagenView3"
         app:layout_constraintHorizontal_bias="0.498"
@@ -152,6 +150,7 @@
         android:maxLines="1"
         android:focusable="true"
         android:inputType="phone"
+        android:maxLength="9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_fecha_nacimiento"
@@ -176,24 +175,45 @@
         app:layout_constraintWidth_percent=".82"
         android:layout_marginTop="15dp"/>
 
-    <EditText
-        android:id="@+id/editText_direccion"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/direccon_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#CCCCCC"
-        android:drawableLeft="@drawable/baseline_location_on_24"
-        android:drawablePadding="13dp"
-        android:hint="Dirección"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_genero"
         app:layout_constraintWidth_percent=".82"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp">
+
+        <EditText
+            android:id="@+id/editText_direccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CCCCCC"
+            android:drawableLeft="@drawable/baseline_location_on_24"
+            android:drawablePadding="13dp"
+            android:hint="Dirección"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="textPersonName"
+            android:maxLength="200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".82"/>
+
+        <ImageButton
+            android:id="@+id/btnGetAddress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_my_location_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/editText_direccion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/buttom_editar_perfil"
@@ -204,10 +224,11 @@
         android:text="Actualizar perfil"
         android:textAllCaps="false"
         android:textStyle="bold"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_direccion"
+        app:layout_constraintTop_toBottomOf="@id/direccon_layout"
         app:layout_constraintVertical_bias="0.598"
         app:layout_constraintWidth_percent=".8" />
 

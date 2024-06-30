@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Contenedor horizontal para la imagen y los textos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Imagen a la izquierda -->
+        <ImageView
+            android:id="@+id/ivUsuarioImagen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher_foreground" /> <!-- Reemplazar con la imagen adecuada -->
+
+        <!-- Contenedor para el ID, fecha y estado a la derecha de la imagen -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombreUsuario_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre usuario"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tvCorreoUsuario_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correo usuario"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Contenedor para los botones debajo de la imagen y textos -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="4"> <!-- Cambiado a 4 para agregar un cuarto botón -->
+
+        <Button
+            android:id="@+id/btnEliminar_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/estado_eliminado"
+            android:text="Eliminar usuario"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="ProyectoDeliciasUrbanas">
+      <SelectionState runConfigName="DeliciasUrbanas">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Samsung">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -31,13 +31,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre Usuario"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
                 android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/tvFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amarante"
                 android:text="Fecha"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
                 android:textSize="16sp"/>
 
             <TextView
@@ -45,6 +53,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Estado"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
                 android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
@@ -55,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="4"> <!-- Cambiado a 4 para agregar un cuarto botón -->
 
         <Button
             android:id="@+id/btnPreparando"
@@ -63,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:textSize="10dp"
+            android:textSize="7dp"
             android:backgroundTint="@color/estado_preaparando"
             android:text="Preparando"/>
 
@@ -72,10 +84,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="10dp"
             android:backgroundTint="@color/estado_listo"
-            android:text="Listo"/>
+            android:text="Listo"
+            android:textSize="7dp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnFinalizado"
@@ -83,9 +95,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:textSize="10dp"
+            android:textSize="7dp"
             android:backgroundTint="@color/estado_finalizado"
             android:text="Finalizado"/>
+
+        <!-- Cuarto botón agregado -->
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="7dp"
+            android:backgroundTint="@color/estado_eliminado"
+            android:text="Eliminar"/>
     </LinearLayout>
 
 </LinearLayout>

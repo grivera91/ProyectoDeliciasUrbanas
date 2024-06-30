@@ -4,11 +4,25 @@ plugins {
 }
 
 android {
-    namespace = "com.equipo1.prueba3"
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("D:\\keystore.jks")
+            keyAlias = "delicias"
+            keyPassword = "Password@8462"
+            storePassword = "Password@8462"
+        }
+        create("realease") {
+            storeFile = file("D:\\keystore.jks")
+            storePassword = "Password@8462"
+            keyAlias = "delicias"
+            keyPassword = "Password@8462"
+        }
+    }
+    namespace = "com.equipo1.DeliciasUrbanas"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.equipo1.prueba3"
+        applicationId = "com.equipo1.DeliciasUrbanas"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -45,6 +59,9 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
+    implementation(libs.play.services.places)
+    implementation(libs.play.services.fitness)
+    implementation(libs.places)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -62,4 +79,17 @@ dependencies {
 
     implementation ("com.google.firebase:firebase-auth:21.0.6")
     implementation ("com.google.firebase:firebase-firestore:24.0.0")
+
+    implementation ("com.google.android.gms:play-services-maps:17.0.1")
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+
+    implementation ("com.google.android.libraries.places:places:2.4.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+
+    implementation ("com.paypal.sdk:paypal-android-sdk:2.16.0")
+
 }
