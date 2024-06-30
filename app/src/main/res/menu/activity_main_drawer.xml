@@ -10,12 +10,12 @@
             android:title="@string/inicio" />
         <item
             android:id="@+id/nav_daily_meal"
-            android:icon="@drawable/baseline_all_inclusive_24"
+            android:icon="@drawable/baseline_restaurant_menu_24"
             android:title="@string/platos_del_d_a" />
         <item
             android:id="@+id/nav_favourite"
-            android:icon="@drawable/baseline_favorite_24"
-            android:title="@string/favoritos" />
+            android:icon="@drawable/baseline_newspaper_24"
+            android:title="Novedades" />
         <item
             android:id="@+id/nav_my_cart"
             android:icon="@drawable/baseline_shopping_cart_24"

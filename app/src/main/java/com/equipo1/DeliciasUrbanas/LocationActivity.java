@@ -61,12 +61,8 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        } else {
-            // Call getLastLocation only after permissions are granted
-            // and the map is ready
         }
 
-        // Initialize map fragment
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_container);
         if (mapFragment == null) {
             mapFragment = SupportMapFragment.newInstance();
@@ -79,11 +75,10 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Move the camera to a default location
+
         LatLng defaultLocation = new LatLng(-34, 151);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 10));
 
-        // Now we can call getLastLocation because the map is ready
         getLastLocation();
     }
 
@@ -133,7 +128,6 @@ public class LocationActivity extends AppCompatActivity implements OnMapReadyCal
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Call getLastLocation only if permission is granted
                 getLastLocation();
             } else {
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();

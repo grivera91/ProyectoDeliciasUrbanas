@@ -87,4 +87,9 @@ dependencies {
     implementation ("com.google.android.libraries.places:places:2.4.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+
+    implementation ("com.paypal.sdk:paypal-android-sdk:2.16.0")
+
 }
