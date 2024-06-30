@@ -1,22 +1,29 @@
 package com.equipo1.DeliciasUrbanas.ui.profile;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.equipo1.DeliciasUrbanas.LocationActivity;
 import com.equipo1.DeliciasUrbanas.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +36,7 @@ import java.util.Calendar;
 
 public class ProfileFragment extends Fragment {
 
+    private static final int REQUEST_CODE_LOCATION = 1;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private FirebaseUser currentUser;
@@ -36,18 +44,21 @@ public class ProfileFragment extends Fragment {
     private TextView usuarioNombres, usuarioApellidos, usuarioCorreo, usuadioDNI, usuarioTelefono, usuarioDireccion ;
     private Spinner comboSpinner;
     private Button buttonAccion;
+    private ImageButton buttonGetAddress;
     String usuarioGenero;
     int selectedItemPosition;
     ImageView perfilUsuario;
+    Context context;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+        context = root.getContext();
 
         perfilUsuario = root.findViewById(R.id.imageView_imagen_perfil);
         usuarioNombres = root.findViewById(R.id.editText_nombres);
@@ -59,6 +70,7 @@ public class ProfileFragment extends Fragment {
         usuarioDireccion = root.findViewById(R.id.editText_direccion);
         usuarioTelefono = root.findViewById(R.id.editText_telefono);
         buttonAccion = root.findViewById(R.id.buttom_editar_perfil);
+        buttonGetAddress = root.findViewById(R.id.btnGetAddress);
 
         cargarDatos();
 
@@ -98,7 +110,15 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        return  root;
+        buttonGetAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LocationActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_LOCATION);
+            }
+        });
+
+        return root;
     }
 
     private void showDatePickerDialog() {
@@ -111,7 +131,6 @@ public class ProfileFragment extends Fragment {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
-
                         usuarioFechaNacimiento.setText(String.format("%d/%d/%d", dayOfMonth, month + 1, year));
                     }
                 }, year, month, day);
@@ -180,7 +199,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void asignarImagen(String usuarioGenero){
-
         switch (usuarioGenero){
             case "Masculino":
                 perfilUsuario.setImageResource(R.drawable.man);
@@ -189,6 +207,17 @@ public class ProfileFragment extends Fragment {
             case "Femenino":
                 perfilUsuario.setImageResource(R.drawable.woman);
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_LOCATION && resultCode == AppCompatActivity.RESULT_OK) {
+            if (data != null) {
+                String address = data.getStringExtra("address");
+                usuarioDireccion.setText(address);
+            }
         }
     }
 }

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +17,14 @@
         android:theme="@style/Theme.DeliciasUrbanas"
         android:value="AIzaSyDHDHer_WNMwqynM-8Zuz2FRf33_sQIrKs"
         tools:targetApi="31">
+        <activity
+            android:name=".LocationActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDHDHer_WNMwqynM-8Zuz2FRf33_sQIrKs" />
+
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
@@ -38,13 +48,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.WelcomeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.DeliciasUrbanas.NoActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
