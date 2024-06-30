@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
                     goToWelcomeActivity();
                 }
             }
-        }, 3000);
+        }, 3500);
 
         // Configurar animación para detener el sonido al finalizar
         anim.setAnimationListener(new Animation.AnimationListener() {

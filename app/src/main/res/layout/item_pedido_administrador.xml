@@ -31,13 +31,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre Usuario"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
                 android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/tvFecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amarante"
                 android:text="Fecha"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
                 android:textSize="16sp"/>
 
             <TextView
@@ -45,6 +53,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Estado"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:fontFamily="@font/amarante"
                 android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
