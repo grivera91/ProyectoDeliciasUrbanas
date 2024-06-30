@@ -7,43 +7,43 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.equipo1.prueba3.ui.home.HomeFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.home.HomeFragment"
         android:label="@string/inicio"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_daily_meal"
-        android:name="com.equipo1.prueba3.ui.dailymeal.DailyMealFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.dailymeal.DailyMealFragment"
         android:label="@string/platos_del_d_a"
         tools:layout="@layout/fragment_daily_meal" />
 
     <fragment
         android:id="@+id/nav_favourite"
-        android:name="com.equipo1.prueba3.ui.favourite.FavouriteFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.favourite.FavouriteFragment"
         android:label="@string/favoritos"
         tools:layout="@layout/fragment_favourite" />
 
     <fragment
         android:id="@+id/nav_my_cart"
-        android:name="com.equipo1.prueba3.ui.cart.MyCartFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.cart.MyCartFragment"
         android:label="@string/mi_carrito"
         tools:layout="@layout/fragment_my_cart" />
 
     <fragment
         android:id="@+id/nav_my_pedido"
-        android:name="com.equipo1.prueba3.ui.pedido.PedidoFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.pedido.PedidoFragment"
         android:label="@string/mis_pedidos"
         tools:layout="@layout/fragment_my_cart" />
 
     <fragment
         android:id="@+id/nav_my_profile"
-        android:name="com.equipo1.prueba3.ui.profile.ProfileFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.profile.ProfileFragment"
         android:label="@string/perfil"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_my_about"
-        android:name="com.equipo1.prueba3.ui.about.AboutFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.about.AboutFragment"
         android:label="@string/nosotros"
         tools:layout="@layout/fragment_about" />
 </navigation>

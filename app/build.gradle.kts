@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.equipo1.prueba3"
+    namespace = "com.equipo1.DeliciasUrbanas"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.equipo1.prueba3"
+        applicationId = "com.equipo1.DeliciasUrbanas"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
