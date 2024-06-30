@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">Delicias Urbanas</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="titulo_restaurant">Delicias Urbanas</string>
+    <string name="frase_restaurant">"Explora tu paladar"</string>
+    <string name="boton_registrar">"Registrar"</string>
+    <string name="boton_ingresar">"Ingresar"</string>
+
+    <string name="usuario_nombre">Nombres</string>
+    <string name="usuario_apellido">Apellidos</string>
+    <string name="usuario_edad">Edad</string>
+    <string name="usuario_dni">DNI</string>
+    <string name="usuario_correo">Correo Electrónico</string>
+    <string name="usuario_contrasenia">Contraseña</string>
+    <string name="daily_meal">Daily Meal</string>
+    <string name="favourite">Favourite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_cart">My Cart</string>
+    <string name="email_email_com">email@email.com</string>
+    <string name="s_t_c">S T C</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="_10_00_23_00">10:00 - 23:00</string>
+    <string name="nombre_producto">Nombre Producto</string>
+    <string name="_5_0">5.0</string>
+    <string name="realizar_pedido">Realizar Pedido</string>
+    <string name="pedido">Pedido</string>
+    <string name="mi_carrito">Mi Carrito</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="platos_del_d_a">Platos del día</string>
+    <string name="inicio">Inicio</string>
+    <string name="perfil">Perfil</string>
+    <string name="contactanos">Contactanos</string>
+    <string name="mis_pedidos">Mis Pedidos</string>
+    <string name="nosotros">Nosotros</string>
+
+    <string-array name="combo_genero">
+        <item>Seleccione su género</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
 </resources>
