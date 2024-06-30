@@ -27,7 +27,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdministradorActivity extends AppCompatActivity {
+public class AdministradorPedidoActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private RecyclerView recyclerView;
@@ -37,11 +37,11 @@ public class AdministradorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_administrador);
+        setContentView(R.layout.activity_administrador_pedido);
 
         db = FirebaseFirestore.getInstance();
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView_pedidos);
         pedidoList = new ArrayList<>();
         adapter = new PedidoAdministradorAdapter(pedidoList, new PedidoAdministradorAdapter.OnPedidoClickListener() {
             @Override
@@ -57,6 +57,11 @@ public class AdministradorActivity extends AppCompatActivity {
             @Override
             public void onFinalizadoClick(PedidoModel pedido) {
                 cambiarEstadoPedido(pedido, "finalizado");
+            }
+
+            @Override
+            public void onEliminarClick(PedidoModel pedido) {
+                eliminarPedido(pedido);
             }
         });
 
@@ -129,5 +134,19 @@ public class AdministradorActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Log.w(TAG, "Error al actualizar pedido", e));
 
         adapter.notifyDataSetChanged();
+    }
+
+    private void eliminarPedido(PedidoModel pedido) {
+        DocumentReference pedidoRef = db.collection("usuarios")
+                .document(pedido.getUsuarioId())
+                .collection("pedidos")
+                .document(pedido.getPedidoId());
+
+        pedidoRef.delete()
+                .addOnSuccessListener(aVoid -> {
+                    pedidoList.remove(pedido);
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> Log.w(TAG, "Error al eliminar pedido", e));
     }
 }

@@ -81,20 +81,38 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        String email = emailEditText.getText().toString().trim();
+        String nombres = nameEditText.getText().toString().trim();
+        String apellidos = lastnameEditText.getText().toString().trim();
+        String dni = dniEditText.getText().toString().trim();
+        String correo = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email)) {
-            emailEditText.setError("Email is required.");
+        if (TextUtils.isEmpty(nombres)) {
+            nameEditText.setError("El campo nombres es necesario.");
+            return;
+        }
+
+        if (TextUtils.isEmpty(apellidos)) {
+            lastnameEditText.setError("El campo apellidos es necesario.");
+            return;
+        }
+
+        if (TextUtils.isEmpty(dni)) {
+            dniEditText.setError("El campo dni es necesario.");
+            return;
+        }
+
+        if (TextUtils.isEmpty(correo)) {
+            emailEditText.setError("El campo correo electrónico es necesario.");
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            passwordEditText.setError("Password is required.");
+            passwordEditText.setError("El campo contraseña es necesario.");
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(correo, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {

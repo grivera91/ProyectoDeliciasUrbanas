@@ -13,7 +13,7 @@
 
         <!-- Imagen a la izquierda -->
         <ImageView
-            android:id="@+id/ivPedidoImagen"
+            android:id="@+id/ivUsuarioImagen"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_launcher_foreground" /> <!-- Reemplazar con la imagen adecuada -->
@@ -27,10 +27,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvNombreUsuario"
+                android:id="@+id/tvNombreUsuario_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre Usuario"
+                android:text="Nombre usuario"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textStyle="bold"
@@ -38,28 +38,18 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/tvFecha"
+                android:id="@+id/tvCorreoUsuario_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/amarante"
-                android:text="Fecha"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/tvEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Estado"
+                android:text="Correo usuario"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textStyle="bold"
                 android:fontFamily="@font/amarante"
-                android:textSize="16sp"/>
+                android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
+
 
     <!-- Contenedor para los botones debajo de la imagen y textos -->
     <LinearLayout
@@ -70,45 +60,13 @@
         android:weightSum="4"> <!-- Cambiado a 4 para agregar un cuarto botón -->
 
         <Button
-            android:id="@+id/btnPreparando"
-            android:layout_width="0dp"
+            android:id="@+id/btnEliminar_usuario"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="7dp"
-            android:backgroundTint="@color/estado_preaparando"
-            android:text="Preparando"/>
-
-        <Button
-            android:id="@+id/btnListo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/estado_listo"
-            android:text="Listo"
-            android:textSize="7dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnFinalizado"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="7dp"
-            android:backgroundTint="@color/estado_finalizado"
-            android:text="Finalizado"/>
-
-        <!-- Cuarto botón agregado -->
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:textSize="7dp"
             android:backgroundTint="@color/estado_eliminado"
-            android:text="Eliminar"/>
+            android:text="Eliminar usuario"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

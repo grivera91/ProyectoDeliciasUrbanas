@@ -186,7 +186,7 @@ public class ProfileFragment extends Fragment {
                         "genero", usuarioGenero,
                         "direccion", usuarioDireccion.getText().toString()
                 )
-                .addOnSuccessListener(aVoid -> Toast.makeText(getActivity(), "Datos registrados correctamente.", Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(aVoid -> Toast.makeText(getActivity(), "Perfil actualizado correctamente.", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(getActivity(), "Ocurrio un error al guardar.", Toast.LENGTH_SHORT).show());
     }
 

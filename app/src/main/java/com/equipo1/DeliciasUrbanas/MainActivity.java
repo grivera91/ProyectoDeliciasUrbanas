@@ -13,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.equipo1.DeliciasUrbanas.activities.AdministradorActivity;
+import com.equipo1.DeliciasUrbanas.activities.AdministradorPedidoActivity;
+import com.equipo1.DeliciasUrbanas.activities.AdministradorUsuarioActivity;
 import com.equipo1.DeliciasUrbanas.activities.LoginActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private TextView nombreMenu, correoMenu;
     private ImageView imagenMenu;
+    private String perfilUsuario;
 
     @Override
     public void onStart(){
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                                 String apellidos = document.getString("apellidos");
                                 String email = document.getString("correo");
                                 String genero = document.getString("genero");
+                                perfilUsuario = document.getString("tipo");
 
                                 String nombreCompleto = nombres + " " + apellidos;
 
@@ -170,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
             case "Femenino":
                 imagenMenu.setImageResource(R.drawable.woman);
                 break;
+            default:
+                imagenMenu.setImageResource(R.drawable.usuario_neutro);
+                break;
         }
     }
 
@@ -191,8 +197,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_admistrador) {
-            Intent intent = new Intent(MainActivity.this, AdministradorActivity.class);
+        if (id == R.id.action_admistrador_usuario) {
+
+            if(perfilUsuario.equals("administrador")){
+                Intent intent = new Intent(MainActivity.this, AdministradorUsuarioActivity.class);
+                startActivity(intent);
+            }else {
+                Toast.makeText(MainActivity.this, "El usuario no es administrador.", Toast.LENGTH_SHORT).show();
+            }
+            return true;
+
+        }else if(id == R.id.action_admistrador_pedido){
+            Intent intent = new Intent(MainActivity.this, AdministradorPedidoActivity.class);
             startActivity(intent);
             return true;
         }else if(id == R.id.action_tema){
@@ -202,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
     private void toggleTheme() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);

@@ -9,7 +9,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Administrador de pedidos"
+        android:text="Administrador de usuarios"
         android:textSize="24sp"
         android:textColor="@color/purple_700"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
         android:background="@color/purple_500"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerView_usuarios"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>

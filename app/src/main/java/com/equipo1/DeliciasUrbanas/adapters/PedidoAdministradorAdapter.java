@@ -84,7 +84,7 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
 
     public static class PedidoAdministradorViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNombreUsuario, tvFecha, tvEstado;
-        private Button btnPreparando, btnListo, btnFinalizado;
+        private Button btnPreparando, btnListo, btnFinalizado, btnEliminar;
         private ImageView ivPedidoImagen;
 
         public PedidoAdministradorViewHolder(@NonNull View itemView) {
@@ -96,6 +96,7 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
             btnPreparando = itemView.findViewById(R.id.btnPreparando);
             btnListo = itemView.findViewById(R.id.btnListo);
             btnFinalizado = itemView.findViewById(R.id.btnFinalizado);
+            btnEliminar = itemView.findViewById(R.id.btnEliminar);
         }
 
         public void bind(final PedidoModel pedido, final OnPedidoClickListener listener) {
@@ -120,6 +121,12 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
                     listener.onFinalizadoClick(pedido);
                 }
             });
+            btnEliminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onEliminarClick(pedido);
+                }
+            });
         }
     }
 
@@ -127,5 +134,6 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
         void onPreparandoClick(PedidoModel pedido);
         void onListoClick(PedidoModel pedido);
         void onFinalizadoClick(PedidoModel pedido);
+        void onEliminarClick(PedidoModel pedido);
     }
 }

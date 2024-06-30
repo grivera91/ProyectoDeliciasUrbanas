@@ -150,6 +150,7 @@
         android:maxLines="1"
         android:focusable="true"
         android:inputType="phone"
+        android:maxLength="9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_fecha_nacimiento"
@@ -197,6 +198,7 @@
             android:singleLine="true"
             android:maxLines="1"
             android:inputType="textPersonName"
+            android:maxLength="200"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent=".82"/>

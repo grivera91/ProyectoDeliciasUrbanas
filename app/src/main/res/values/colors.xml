@@ -14,4 +14,5 @@
     <color name="estado_preaparando">#FFC107</color>
     <color name="estado_listo">#2AB30C</color>
     <color name="estado_finalizado">#2196F3</color>
+    <color name="estado_eliminado">#E91E4D</color>
 </resources>
