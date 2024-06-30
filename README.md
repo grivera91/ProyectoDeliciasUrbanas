@@ -1,7 +1,7 @@
-# Desarrollo de Apliaciones Moviles
+# Curso: Desarrollo de Apliaciones Moviles
 Grupo 1 
-## Proyectp
+## Proyecto:
 Delicias Urbanas
-### Integrantes
+### Integrantes:
 - Gianmaco Rivera Carhuapoma
 - Steven Hernandez Romero
