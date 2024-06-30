@@ -91,6 +91,14 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
         realizarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                int cantidadProductos = list.size();
+
+                if (cantidadProductos == 0) {
+                    Toast.makeText(getContext(), "El carrito está vacío!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 realizarPagoPayPal();
             }
         });
@@ -190,11 +198,6 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
     }
 
     private void registrarPedido() {
-
-        if (list.isEmpty()) {
-            Toast.makeText(getContext(), "El carrito está vacío!", Toast.LENGTH_LONG).show();
-            return;
-        }
 
         String pedidoId = db.collection("usuarios").document().getId(); // Genera un ID único
         PedidoModel pedido = new PedidoModel(pedidoId, new Date(), list.size(), "preparando", list, importeTotalPedido);
