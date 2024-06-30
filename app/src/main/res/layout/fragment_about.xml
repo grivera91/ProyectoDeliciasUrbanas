@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.about.AboutFragment">
+
+    <ImageView
+        android:id="@+id/imagenView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/foreground_design"
+        android:scaleType="centerCrop"
+        app:layout_editor_absoluteX="0dp"
+        app:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/imagen_about"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:focusable="false"
+        android:src="@drawable/logo_utp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imagenView3"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <TextView
+        android:id="@+id/text_titulo_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lobster"
+        android:text="Sobre nosotros"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="33sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imagenView3"
+        app:layout_constraintEnd_toEndOf="@+id/imagenView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_about"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <TextView
+        android:id="@+id/textView_curso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CCCCCC"
+        android:drawableLeft="@drawable/baseline_android_24"
+        android:drawablePadding="13dp"
+        android:textColorHint="@color/white"
+        android:text="Desarrollo de Apliaciones Moviles"
+        android:textColor="@color/white"
+        android:singleLine="true"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_titulo_about"
+        app:layout_constraintWidth_percent=".8"
+        android:focusable="false"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView_docente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_co_present_24"
+        android:drawablePadding="13dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Diaz Garrampe, Darwin"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_curso"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/textView_grupo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CCCCCC"
+        android:drawableLeft="@drawable/baseline_groups_24"
+        android:drawablePadding="13dp"
+        android:textColorHint="@color/white"
+        android:focusable="false"
+        android:text="Grupo 1"
+        android:textColor="@color/white"
+        android:singleLine="true"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_docente"
+        app:layout_constraintWidth_percent=".8"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView_proyecto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_lunch_dining_24"
+        android:drawablePadding="13dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Proyecto: Delicias Urbanas"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_grupo"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/editText_integrante1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="13dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Rivera Carhuapoma, Gianmarco"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_proyecto"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/editText_integrante2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="13dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Hernandez Romero, Steven"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_integrante1"
+        app:layout_constraintWidth_percent=".8" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
