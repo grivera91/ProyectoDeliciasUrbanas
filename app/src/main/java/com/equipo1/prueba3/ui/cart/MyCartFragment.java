@@ -1,5 +1,6 @@
 package com.equipo1.prueba3.ui.cart;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -42,12 +43,15 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
     TextView importeTotal;
     Button realizarPedido;
     double importeTotalPedido;
+    private MediaPlayer mediaPlayer;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_my_cart, container, false);
 
+        // Inicializa el MediaPlayer
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.pay_sound);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -127,6 +131,7 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
                                     .document(producto.getNombre())
                                     .set(producto);
                         }
+                        reproducirSonido();
                         Toast.makeText(getContext(), "Pedido registrado correctamente", Toast.LENGTH_LONG).show();
                     }
                 })
@@ -171,9 +176,27 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
                     }
                 });
     }
+
     @Override
     public void onProductoEliminado(double nuevoTotal) {
         String total = String.valueOf(nuevoTotal);
         importeTotal.setText(String.valueOf(nuevoTotal));
+    }
+
+    private void reproducirSonido(){
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            mediaPlayer.seekTo(0);
+        }
+        mediaPlayer.start();
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroyView();
     }
 }
