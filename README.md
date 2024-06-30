@@ -1,7 +1,7 @@
-# Encabezado Principal
+# Desarrollo de Apliaciones Moviles
 Grupo 1 
-## Encabezado Secundario
-Proyecto Delicias Urbanas
-### Encabezado Terciario
+## Proyectp
+Delicias Urbanas
+### Integrantes
 - Gianmaco Rivera Carhuapoma
 - Steven Hernandez Romero
