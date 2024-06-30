@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <FrameLayout
         android:id="@+id/map_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/address_text_view"
@@ -23,8 +25,9 @@
         android:id="@+id/get_address_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Obtened la dirección actual"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:text="Obtener dirección" />
+        android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

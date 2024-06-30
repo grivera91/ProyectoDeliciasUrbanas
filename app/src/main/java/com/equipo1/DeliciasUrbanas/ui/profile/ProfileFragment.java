@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,8 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.equipo1.DeliciasUrbanas.LocationActivity;
 import com.equipo1.DeliciasUrbanas.R;
+import com.equipo1.DeliciasUrbanas.activities.LocationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -114,6 +113,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), LocationActivity.class);
+                intent.putExtra("address", usuarioDireccion.getText().toString());
                 startActivityForResult(intent, REQUEST_CODE_LOCATION);
             }
         });
