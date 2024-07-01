@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseUser currentUser;
     private EditText usuarioFechaNacimiento;
-    private TextView usuarioNombres, usuarioApellidos, usuarioCorreo, usuadioDNI, usuarioTelefono, usuarioDireccion ;
+    private TextView usuarioNombres, usuarioApellidos, usuarioCorreo, usuadioDNI, usuarioTelefono, usuarioDireccion;
     private Spinner comboSpinner;
     private Button buttonAccion;
     private ImageButton buttonGetAddress;
@@ -95,6 +95,7 @@ public class ProfileFragment extends Fragment {
                     selectedItemPosition = comboSpinner.getSelectedItemPosition();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(getActivity(), "Debe elegir un valor en el combo genero", Toast.LENGTH_SHORT).show();
@@ -127,53 +128,46 @@ public class ProfileFragment extends Fragment {
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
-                        usuarioFechaNacimiento.setText(String.format("%d/%d/%d", dayOfMonth, month + 1, year));
-                    }
-                }, year, month, day);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
+                (view, year1, month1, dayOfMonth) -> usuarioFechaNacimiento.setText(String.format("%d/%d/%d", dayOfMonth, month1 + 1, year1)),
+                year, month, day);
 
         datePickerDialog.show();
     }
 
-    private void cargarDatos(){
+    private void cargarDatos() {
         String usuarioId = currentUser.getUid();
         db = FirebaseFirestore.getInstance();
         db.collection("usuarios")
                 .document(usuarioId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                usuarioNombres.setText(document.getString("nombres"));
-                                usuarioApellidos.setText(document.getString("apellidos"));
-                                usuarioCorreo.setText(document.getString("correo"));
-                                usuadioDNI.setText(document.getString("dni"));
-                                usuarioFechaNacimiento.setText(document.getString("fechaNacimiento"));
-                                usuarioTelefono.setText(document.getString("telefono"));
-                                usuarioGenero = document.getString("genero");
-                                usuarioDireccion.setText(document.getString("direccion"));
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            usuarioNombres.setText(document.getString("nombres"));
+                            usuarioApellidos.setText(document.getString("apellidos"));
+                            usuarioCorreo.setText(document.getString("correo"));
+                            usuadioDNI.setText(document.getString("dni"));
+                            usuarioFechaNacimiento.setText(document.getString("fechaNacimiento"));
+                            usuarioTelefono.setText(document.getString("telefono"));
+                            usuarioGenero = document.getString("genero");
+                            usuarioDireccion.setText(document.getString("direccion"));
 
-                                if(usuarioGenero != null){
-                                    selectItemByText(usuarioGenero);
-                                    asignarImagen(usuarioGenero);
-                                }
+                            if (usuarioGenero != null) {
+                                selectItemByText(usuarioGenero);
+                                asignarImagen(usuarioGenero);
                             }
                         }
                     }
                 });
     }
 
-    private void guardarCambios(){
+    private void guardarCambios() {
 
-        String  usuarioId = currentUser.getUid();
+        String usuarioId = currentUser.getUid();
 
-        if(selectedItemPosition == 0){
+        if (selectedItemPosition == 0) {
             Toast.makeText(getActivity(), "Debe elegir un valor en el combo genero", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -190,6 +184,7 @@ public class ProfileFragment extends Fragment {
                 .addOnFailureListener(e -> Toast.makeText(getActivity(), "Ocurrio un error al guardar.", Toast.LENGTH_SHORT).show());
     }
 
+    @SuppressWarnings("unchecked")
     private void selectItemByText(String textToSelect) {
         ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) comboSpinner.getAdapter();
         int position = adapter.getPosition(textToSelect);
@@ -198,8 +193,8 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void asignarImagen(String usuarioGenero){
-        switch (usuarioGenero){
+    private void asignarImagen(String usuarioGenero) {
+        switch (usuarioGenero) {
             case "Masculino":
                 perfilUsuario.setImageResource(R.drawable.man);
                 break;

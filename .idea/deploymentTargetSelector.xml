@@ -4,6 +4,14 @@
     <selectionStates>
       <SelectionState runConfigName="DeliciasUrbanas">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-07-01T00:42:33.856163Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=R5CWB1XE08D" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
       <SelectionState runConfigName="Samsung">
         <option name="selectionMode" value="DROPDOWN" />
