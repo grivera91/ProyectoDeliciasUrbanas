@@ -8,12 +8,20 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <!-- Main content view -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- Include the app bar layout -->
     <include
         android:id="@+id/app_bar_main"
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
+    <!-- Navigation drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -39,7 +47,7 @@
                 android:layout_height="80dp"
                 android:src="@drawable/logotipo"
                 android:scaleType="centerInside"
-                android:alpha="0.5"/>
+                android:alpha="0.5" />
 
             <TextView
                 android:id="@+id/logout_text"
@@ -50,7 +58,7 @@
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:padding="10dp"
-                android:alpha="0.5"/>
+                android:alpha="0.5" />
 
             <Button
                 android:id="@+id/logOutButton"
@@ -60,8 +68,6 @@
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:padding="15dp" />
-
         </LinearLayout>
-
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

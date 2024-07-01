@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +17,14 @@ import android.widget.Toast;
 import com.equipo1.DeliciasUrbanas.activities.AdministradorPedidoActivity;
 import com.equipo1.DeliciasUrbanas.activities.AdministradorUsuarioActivity;
 import com.equipo1.DeliciasUrbanas.activities.LoginActivity;
+import com.equipo1.DeliciasUrbanas.ui.cart.MyCartFragment;
+import com.equipo1.DeliciasUrbanas.ui.home.HomeFragment;
+import com.equipo1.DeliciasUrbanas.ui.pedido.PedidoFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -114,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                 logOutUser(mUser);
             }
         });
+
+        redireccionarFragment();
     }
     private void logOutUser(FirebaseUser mUser)
     {
@@ -233,5 +240,68 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.apply();
         recreate();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (fragment instanceof MyCartFragment && ((MyCartFragment) fragment).isFromButton()) {
+            // Si el fragmento actual es MyCartFragment y fue abierto desde el botón, maneja el botón hacia atrás
+            getSupportFragmentManager().beginTransaction()
+                    .remove(fragment)
+                    .commit();
+            // Muestra de nuevo el app_bar_main
+            findViewById(R.id.app_bar_main).setVisibility(View.VISIBLE);
+        } else {
+            // Si no es MyCartFragment o no fue abierto desde el botón, llama al comportamiento por defecto
+            super.onBackPressed();
+        }
+    }
+
+    private void redireccionarFragment(){
+        // Verifica si hay un fragmento específico que se deba abrir
+        Intent intent = getIntent();
+        String openFragment = intent.getStringExtra("openFragment");
+        boolean fromButton = intent.getBooleanExtra("fromButton", false); // Parámetro adicional
+
+        FrameLayout fragmentContainer = findViewById(R.id.fragment_container);
+        View appBarMain = findViewById(R.id.app_bar_main);
+
+        if (openFragment != null && openFragment.equals("MyCartFragment")) {
+            // Oculta el app_bar_main layout
+            if (appBarMain != null) {
+                appBarMain.setVisibility(View.GONE);
+            }
+            // Carga el fragmento de MyCartFragment
+            MyCartFragment myCartFragment = MyCartFragment.newInstance(fromButton);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, myCartFragment) // Pasa el parámetro al fragmento
+                    .commit();
+        } else if (openFragment != null && openFragment.equals("PedidoFragment")) {
+            // Oculta el app_bar_main layout
+            if (appBarMain != null) {
+                appBarMain.setVisibility(View.GONE);
+            }
+            // Carga el fragmento de PedidoFragment
+            PedidoFragment pedidoFragment = PedidoFragment.newInstance(fromButton);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, pedidoFragment) // Pasa el parámetro al fragmento
+                    .commit();
+        } else if (openFragment != null && openFragment.equals("HomeFragment")) {
+            // Oculta el app_bar_main layout
+            if (appBarMain != null) {
+                appBarMain.setVisibility(View.GONE);
+            }
+            // Carga el fragmento de HomeFragment
+            HomeFragment homeFragment = HomeFragment.newInstance(fromButton);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, homeFragment) // Pasa el parámetro al fragmento
+                    .commit();
+        } else {
+            // Muestra el app_bar_main layout
+            if (appBarMain != null) {
+                appBarMain.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }

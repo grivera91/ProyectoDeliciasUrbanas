@@ -44,6 +44,22 @@ public class HomeFragment extends Fragment implements UpdateVerticalRec {
     ArrayList<HomeVerModel> homeVerModelList;
     HomeVerAdapter homeVerAdapter;
     TextView nombreUsuarioHome;
+    private boolean fromButton;
+
+    public static HomeFragment newInstance(boolean fromButton) {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("fromButton", fromButton);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            fromButton = getArguments().getBoolean("fromButton", false);
+        }
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -134,16 +150,25 @@ public class HomeFragment extends Fragment implements UpdateVerticalRec {
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                new AlertDialog.Builder(requireContext())
-                        .setMessage("¿Estás seguro de que deseas salir de la aplicación?")
-                        .setCancelable(false)
-                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                requireActivity().finish();
-                            }
-                        })
-                        .setNegativeButton("No", null)
-                        .show();
+                if (fromButton) {
+                    // Si el fragmento fue abierto desde el botón, omite la validación
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .remove(HomeFragment.this)
+                            .commit();
+                    getActivity().findViewById(R.id.app_bar_main).setVisibility(View.VISIBLE);
+                } else {
+                    // Muestra el diálogo de confirmación
+                    new AlertDialog.Builder(requireContext())
+                            .setMessage("¿Estás seguro de que deseas salir de la aplicación?")
+                            .setCancelable(false)
+                            .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    requireActivity().finish();
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+                }
             }
         });
 
