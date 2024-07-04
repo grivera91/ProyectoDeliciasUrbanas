@@ -32,11 +32,11 @@ public class DailyMealFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         dailyMealModel = new ArrayList<>();
 
-        dailyMealModel.add(new DailyMealModel(R.drawable.desayunos,"Desayunos","","Perfecto para comenzar el dáa","breakfast"));
-        dailyMealModel.add(new DailyMealModel(R.drawable.almuerzos,"Almuerzos","","Menu y platos a la carta","lunch"));
-        dailyMealModel.add(new DailyMealModel(R.drawable.cenas,"Cenas","","Termina el día de la mejor manera","dinner"));
-        dailyMealModel.add(new DailyMealModel(R.drawable.postres,"Postres","","Endulza tu diá","sweets"));
-        dailyMealModel.add(new DailyMealModel(R.drawable.bebidas,"Bebidas","","Bebidas para toda ocasión","coffee"));
+        dailyMealModel.add(new DailyMealModel(R.drawable.desayunos,"Desayunos","","Desayunos peruanos","breakfast"));
+        dailyMealModel.add(new DailyMealModel(R.drawable.almuerzos,"Almuerzos","","Platos criollos","lunch"));
+        dailyMealModel.add(new DailyMealModel(R.drawable.cenas,"Cenas","","Lonchecito","dinner"));
+        dailyMealModel.add(new DailyMealModel(R.drawable.postres,"Postres","","Los mejores Postres del Perú","sweets"));
+        dailyMealModel.add(new DailyMealModel(R.drawable.bebidas,"Bebidas","","Variedad de bebidas","coffee"));
 
         dailyMealAdapter = new DailyMealAdapter(getContext(), dailyMealModel);
         recyclerView.setAdapter(dailyMealAdapter);
