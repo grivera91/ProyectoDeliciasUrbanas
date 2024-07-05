@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".ui.cart.MyCartFragment">
+    tools:context=".ui.fragments.MyCartFragment">
 
     <TextView
         android:id="@+id/mycart_txt"
