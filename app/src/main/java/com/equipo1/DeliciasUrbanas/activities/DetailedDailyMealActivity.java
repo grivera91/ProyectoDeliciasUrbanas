@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.equipo1.DeliciasUrbanas.MainActivity;
 import com.equipo1.DeliciasUrbanas.R;
 import com.equipo1.DeliciasUrbanas.adapters.DetailedDailyAdapter;
 import com.equipo1.DeliciasUrbanas.models.DetailedDailyModel;
@@ -22,7 +23,7 @@ public class DetailedDailyMealActivity extends AppCompatActivity {
     List<DetailedDailyModel> detailedDailyModelList;
     DetailedDailyAdapter dailyAdapter;
     ImageView imageView;
-    FloatingActionButton botonAgregar;
+    FloatingActionButton botonIrCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class DetailedDailyMealActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.detailed_rec);
         imageView = findViewById(R.id.detailed_img);
 
-        botonAgregar = findViewById(R.id.boton_agregar);
+        botonIrCarrito = findViewById(R.id.boton_ir_carrito);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         detailedDailyModelList = new ArrayList<>();
@@ -95,10 +96,14 @@ public class DetailedDailyMealActivity extends AppCompatActivity {
             dailyAdapter.notifyDataSetChanged();
         }
 
-        botonAgregar.setOnClickListener(new View.OnClickListener() {
+        botonIrCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(DetailedDailyMealActivity.this, MainActivity.class);
+                intent.putExtra("openFragment", "MyCartFragment");
+                intent.putExtra("fromButton", true); // Parámetro adicional
+                startActivity(intent);
+                finish();
             }
         });
     }

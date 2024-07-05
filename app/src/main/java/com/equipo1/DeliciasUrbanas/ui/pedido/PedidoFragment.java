@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.equipo1.DeliciasUrbanas.R;
 import com.equipo1.DeliciasUrbanas.adapters.PedidoAdapter;
 import com.equipo1.DeliciasUrbanas.models.PedidoModel;
+import com.equipo1.DeliciasUrbanas.ui.cart.MyCartFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -38,6 +39,27 @@ public class PedidoFragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseUser currentUser;
     TextView textViewPedidosTotal;
+    private boolean fromButton;
+
+    public static PedidoFragment newInstance(boolean fromButton) {
+        PedidoFragment fragment = new PedidoFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("fromButton", fromButton);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            fromButton = getArguments().getBoolean("fromButton", false);
+        }
+    }
+
+    public boolean isFromButton() {
+        return fromButton;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +76,8 @@ public class PedidoFragment extends Fragment {
         listaPedidos = new ArrayList<>();
 
         cargarPedido();
+
+
 
         return  root;
     }

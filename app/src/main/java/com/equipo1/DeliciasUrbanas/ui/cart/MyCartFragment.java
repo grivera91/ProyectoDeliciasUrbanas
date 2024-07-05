@@ -20,7 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.equipo1.DeliciasUrbanas.MainActivity;
 import com.equipo1.DeliciasUrbanas.R;
+import com.equipo1.DeliciasUrbanas.activities.DetailedDailyMealActivity;
 import com.equipo1.DeliciasUrbanas.adapters.CartAdapter;
 import com.equipo1.DeliciasUrbanas.models.PedidoModel;
 import com.equipo1.DeliciasUrbanas.models.Producto;
@@ -65,6 +67,27 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
     double importeTotalPedido;
     private MediaPlayer mediaPlayer;
     private ProgressBar progressBar;
+    private boolean fromButton;
+
+    public static MyCartFragment newInstance(boolean fromButton) {
+        MyCartFragment fragment = new MyCartFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("fromButton", fromButton);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            fromButton = getArguments().getBoolean("fromButton", false);
+        }
+    }
+
+    public boolean isFromButton() {
+        return fromButton;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -114,6 +137,14 @@ public class MyCartFragment extends Fragment implements CartAdapter.CartAdapterC
                 registrarPedido();
                 limpiarCarrito();
                 ocultarIndicadorDeCarga();
+
+                /*
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("openFragment", "PedidoFragment");
+                intent.putExtra("fromButton", true); // Parámetro adicional
+                startActivity(intent);
+                getActivity().finish();*/
+
             }
         }, 2000);
     }
