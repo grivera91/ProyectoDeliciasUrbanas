@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/nav_my_about"
-        android:name="com.equipo1.DeliciasUrbanas.ui.about.AboutFragment"
+        android:name="com.equipo1.DeliciasUrbanas.ui.fragments.AboutFragment"
         android:label="@string/nosotros"
         tools:layout="@layout/fragment_about" />
 </navigation>

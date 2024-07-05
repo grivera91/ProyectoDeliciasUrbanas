@@ -1,4 +1,4 @@
-package com.equipo1.DeliciasUrbanas.ui.about;
+package com.equipo1.DeliciasUrbanas.ui.fragments;
 
 import android.os.Bundle;
 
