@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emailEditText = findViewById(R.id.editText3);
-        passwordEditText = findViewById(R.id.editText4);
-        loginButton = findViewById(R.id.button);
-        registerButton = findViewById(R.id.editText6);
+        emailEditText = findViewById(R.id.loginCorreo);
+        passwordEditText = findViewById(R.id.contraseniaLogin);
+        loginButton = findViewById(R.id.botonIngresarLogin);
+        registerButton = findViewById(R.id.RegistrarLogin);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (TextUtils.isEmpty(password)) {
-            passwordEditText.setError("Contraseña is requerido.");
+            passwordEditText.setError("Contraseña es requerido.");
             return;
         }
 

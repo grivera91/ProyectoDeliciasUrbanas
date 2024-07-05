@@ -8,7 +8,7 @@
     tools:context=".activities.LoginActivity">
 
     <ImageView
-        android:id="@+id/imagenView3"
+        android:id="@+id/fondologin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg4"
@@ -27,13 +27,13 @@
         android:textColor="@color/white"
         android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imagenView3"
+        app:layout_constraintEnd_toEndOf="@+id/fondologin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".2"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/titulologin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/boton_ingresar"
@@ -47,7 +47,7 @@
         android:textAlignment="center"/>
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/loginCorreo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#CCCCCC"
@@ -61,12 +61,12 @@
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView5"
+        app:layout_constraintTop_toBottomOf="@id/titulologin"
         app:layout_constraintWidth_percent=".8"
         android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/contraseniaLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#CCCCCC"
@@ -81,11 +81,11 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText3"
+        app:layout_constraintTop_toBottomOf="@id/loginCorreo"
         app:layout_constraintWidth_percent=".8"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/botonIngresarLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg_design"
@@ -96,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText4"
+        app:layout_constraintTop_toBottomOf="@id/contraseniaLogin"
         app:layout_constraintWidth_percent=".8"
         app:layout_constraintVertical_bias="0.6"/>
 
@@ -111,10 +111,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"/>
+        app:layout_constraintTop_toBottomOf="@+id/botonIngresarLogin"/>
 
     <TextView
-        android:id="@+id/editText6"
+        android:id="@+id/RegistrarLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/boton_registrar"
@@ -125,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/editText5"
-        app:layout_constraintTop_toBottomOf="@id/button"
+        app:layout_constraintTop_toBottomOf="@id/botonIngresarLogin"
         app:layout_constraintHorizontal_bias="0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
