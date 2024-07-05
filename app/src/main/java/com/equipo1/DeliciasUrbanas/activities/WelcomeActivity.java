@@ -68,7 +68,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Confirmar salida") // Título del diálogo
-                .setMessage("¿Estás seguro de que quiere salir de la aplicación?") // Mensaje de confirmación
+                .setMessage("¿Estás seguro de salir de la aplicación?") // Mensaje de confirmación
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
