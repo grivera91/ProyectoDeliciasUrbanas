@@ -131,28 +131,49 @@ public class DetailedDailyAdapter extends RecyclerView.Adapter<DetailedDailyAdap
     private void agregarAlCarrito(Producto producto)
     {
         mUser = mAuth.getCurrentUser();
-        if(mUser != null){
-
+        if (mUser != null) {
             colleccionUsuarios = "usuarios";
             collecionCarrito = "carrito";
 
             FirebaseUser currentUser = mAuth.getCurrentUser();
+            String productId = producto.getNombre();
             db.collection(colleccionUsuarios)
                     .document(currentUser.getUid())
                     .collection(collecionCarrito)
-                    .document(producto.getNombre()).set(producto)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(context,"Añadido al carrito",Toast.LENGTH_SHORT).show();
+                    .document(productId)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            // El producto existe, actualizar la cantidad y el precio total
+                            Producto productoExistente = documentSnapshot.toObject(Producto.class);
+                            int nuevaCantidad = productoExistente.getCantidad() + producto.getCantidad();
+                            double nuevoPrecioTotal = nuevaCantidad * producto.getPrecio();
+
+                            productoExistente.setCantidad(nuevaCantidad);
+                            productoExistente.setPrecio(nuevoPrecioTotal);
+
+                            db.collection(colleccionUsuarios)
+                                    .document(currentUser.getUid())
+                                    .collection(collecionCarrito)
+                                    .document(productId)
+                                    .set(productoExistente)
+                                    .addOnSuccessListener(aVoid -> Toast.makeText(context, "Carrito actualizado", Toast.LENGTH_SHORT).show())
+                                    .addOnFailureListener(e -> Toast.makeText(context, "Error al actualizar producto", Toast.LENGTH_SHORT).show());
+                        } else {
+                            // El producto no existe, calcular el precio total y agregarlo nuevo
+                            double precioTotalInicial = producto.getCantidad() * producto.getPrecio(); // Precio total basado en la cantidad inicial
+                            producto.setPrecio(precioTotalInicial); // Ajustamos el precio total en el objeto producto
+
+                            db.collection(colleccionUsuarios)
+                                    .document(currentUser.getUid())
+                                    .collection(collecionCarrito)
+                                    .document(productId)
+                                    .set(producto)
+                                    .addOnSuccessListener(aVoid -> Toast.makeText(context, "Producto añadido al carrito", Toast.LENGTH_SHORT).show())
+                                    .addOnFailureListener(e -> Toast.makeText(context, "Error al agregar producto", Toast.LENGTH_SHORT).show());
                         }
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context,"Error al agregar producto",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    .addOnFailureListener(e -> Toast.makeText(context, "Error al acceder al carrito", Toast.LENGTH_SHORT).show());
         }
     }
 }
