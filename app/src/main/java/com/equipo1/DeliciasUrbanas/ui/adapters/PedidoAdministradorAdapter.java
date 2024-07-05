@@ -25,13 +25,8 @@ import java.util.List;
 public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdministradorAdapter.PedidoAdministradorViewHolder> {
     private List<PedidoModel> pedidos;
     private OnPedidoClickListener listener;
-    Context context;
+    private Context context;
 
-    public PedidoAdministradorAdapter(List<PedidoModel> pedidos, OnPedidoClickListener listener, Context context) {
-        this.pedidos = pedidos;
-        this.listener = listener;
-        this.context = context;
-    }
     public PedidoAdministradorAdapter(List<PedidoModel> pedidos, OnPedidoClickListener listener) {
         this.pedidos = pedidos;
         this.listener = listener;
@@ -44,18 +39,18 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
         context = view.getContext();
         return new PedidoAdministradorViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull PedidoAdministradorViewHolder holder, int position) {
         PedidoModel pedido = pedidos.get(position);
         String nombreCompleto = pedido.getUsuarioNombres() + " " + pedido.getUsuarioApellidos();
         String fechaCorta = formatDateAndTime(pedido.getFecha());
 
-
         holder.tvNombreUsuario.setText(nombreCompleto);
         holder.tvFecha.setText(fechaCorta);
         holder.tvEstado.setText(pedidos.get(position).getEstado());
 
-        switch (pedido.getEstado()){
+        switch (pedido.getEstado()) {
             case "preparando":
                 Glide.with(holder.itemView.getContext()).asGif().load(R.drawable.pedido_preparando).into(holder.ivPedidoImagen);
                 holder.tvEstado.setTextColor(ContextCompat.getColor(context, R.color.estado_preaparando));
@@ -69,7 +64,6 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
                 holder.tvEstado.setTextColor(ContextCompat.getColor(context, R.color.estado_finalizado));
                 break;
             default:
-                // Handle unexpected state
                 holder.ivPedidoImagen.setImageResource(R.drawable.baseline_fastfood_24);
                 holder.tvEstado.setTextColor(Color.BLACK);
                 break;
@@ -100,33 +94,10 @@ public class PedidoAdministradorAdapter extends RecyclerView.Adapter<PedidoAdmin
         }
 
         public void bind(final PedidoModel pedido, final OnPedidoClickListener listener) {
-            tvNombreUsuario.setText(pedido.getUsuarioNombres() + " " + pedido.getUsuarioApellidos());
-            tvFecha.setText(pedido.getFecha().toString());
-            tvEstado.setText(pedido.getEstado());
-            btnPreparando.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onPreparandoClick(pedido);
-                }
-            });
-            btnListo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onListoClick(pedido);
-                }
-            });
-            btnFinalizado.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onFinalizadoClick(pedido);
-                }
-            });
-            btnEliminar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onEliminarClick(pedido);
-                }
-            });
+            btnPreparando.setOnClickListener(v -> listener.onPreparandoClick(pedido));
+            btnListo.setOnClickListener(v -> listener.onListoClick(pedido));
+            btnFinalizado.setOnClickListener(v -> listener.onFinalizadoClick(pedido));
+            btnEliminar.setOnClickListener(v -> listener.onEliminarClick(pedido));
         }
     }
 

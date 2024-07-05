@@ -31,6 +31,7 @@ public class UsuarioAdministradorAdapter extends RecyclerView.Adapter<UsuarioAdm
         this.usuarios = usuarios;
         this.listener = listener;
     }
+
     @NonNull
     @Override
     public UsuarioAdministradorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,7 +48,7 @@ public class UsuarioAdministradorAdapter extends RecyclerView.Adapter<UsuarioAdm
         holder.tvNombreUsuario.setText(nombreCompleto);
         holder.tvCorreoUsuario.setText(usuarios.get(position).getCorreo());
 
-        switch (usuario.getGenero()){
+        switch (usuario.getGenero()) {
             case "Masculino":
                 holder.ivUsuarioImagen.setImageResource(R.drawable.man);
                 break;
@@ -55,7 +56,6 @@ public class UsuarioAdministradorAdapter extends RecyclerView.Adapter<UsuarioAdm
                 holder.ivUsuarioImagen.setImageResource(R.drawable.woman);
                 break;
             default:
-                // Handle unexpected state
                 holder.ivUsuarioImagen.setImageResource(R.drawable.usuario_neutro);
                 break;
         }
@@ -80,17 +80,13 @@ public class UsuarioAdministradorAdapter extends RecyclerView.Adapter<UsuarioAdm
             btnEliminar = itemView.findViewById(R.id.btnEliminar_usuario);
         }
 
-        public void bind(final Usuario usuario, final UsuarioAdministradorAdapter.OnUsuarioClickListener listener) {
+        public void bind(final Usuario usuario, final OnUsuarioClickListener listener) {
             tvNombreUsuario.setText(usuario.getNombres() + " " + usuario.getApellidos());
             tvCorreoUsuario.setText(usuario.getCorreo());
-            btnEliminar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onEliminarClick(usuario);
-                }
-            });
+            btnEliminar.setOnClickListener(v -> listener.onEliminarClick(usuario));
         }
     }
+
     public interface OnUsuarioClickListener {
         void onEliminarClick(Usuario usuario);
     }
