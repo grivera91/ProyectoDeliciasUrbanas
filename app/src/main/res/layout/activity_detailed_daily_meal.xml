@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mediumGray"
-    tools:context=".activities.DetailedDailyMealActivity">
+    tools:context=".ui.activities.DetailedDailyMealActivity">
     
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
